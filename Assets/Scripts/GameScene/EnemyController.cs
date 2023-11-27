@@ -10,12 +10,16 @@ public class EnemyController : MonoBehaviour
     private NavMeshAgent agent;
     private GameObject player;
     private ScoreController scoreController;
+    private Animator animator;
+
     public int pointsByKill = 1;
     private int health = 3;
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+
         //find player
         player = GameObject.Find("Player");
         scoreController = GameObject.Find("ScoreController").GetComponent<ScoreController>();
@@ -24,8 +28,18 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float distance = Vector3.Distance(this.transform.position, player.transform.position);
+
         agent.SetDestination(player.transform.position);
 
+        if(animator != null){
+          animator.SetBool("isRunning", true);
+
+          if(distance < 1f){
+            animator.SetTrigger("Attack");
+          }
+        }
+        
         if (health <= 0)
         {
             scoreController.AddScore(pointsByKill);

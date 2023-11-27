@@ -10,7 +10,11 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletPrefab;
     // events
     public UnityEvent onTakeDamage;
+    private Animator animator;
 
+    void Start(){
+      animator = GetComponent<Animator>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -31,10 +35,22 @@ public class PlayerController : MonoBehaviour
             speed = 10.0f;
         }
 
+
+        if(animator != null){
+          if(!movement.Equals(Vector3.zero)){
+            animator.SetFloat("Speed",speed);
+          }else{
+            animator.SetFloat("Speed",0);
+          }
+        }
+
         // Shoot
         if (Input.GetMouseButtonDown(0))
         {
             Shoot();
+            if(animator != null){
+              animator.SetTrigger("Attack");
+            }
         }
     }
 
@@ -55,8 +71,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+                Debug.Log("collision");
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
+          Debug.Log("damage");
             onTakeDamage.Invoke();
         }
     }

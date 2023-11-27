@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1105 &110500000
+HumanTemplate:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MonkeyTemplate
+  m_BoneTemplate:
+    Head: ORG-head
+    Hips: ORG-hips
+    Left Index Distal: ORG-f_index.03.L
+    Left Index Intermediate: ORG-f_index.02.L
+    Left Index Proximal: ORG-f_index.01.L
+    Left Little Distal: ORG-f_pinky.03.L
+    Left Little Intermediate: ORG-f_pinky.02.L
+    Left Little Proximal: ORG-f_pinky.01.L
+    Left Thumb Distal: ORG-thumb.03.L
+    Left Thumb Intermediate: ORG-thumb.02.L
+    Left Thumb Proximal: ORG-thumb.01.L
+    LeftFoot: ORG-foot.L
+    LeftHand: ORG-hand.L
+    LeftLowerArm: ORG-forearm.L
+    LeftLowerLeg: ORG-shin.L
+    LeftShoulder: ORG-shoulder.L
+    LeftToes: ORG-toe.L
+    LeftUpperArm: ORG-upper_arm.L
+    LeftUpperLeg: ORG-thigh.L
+    Neck: ORG-neck
+    Right Index Distal: ORG-f_index.03.R
+    Right Index Intermediate: ORG-f_index.02.R
+    Right Index Proximal: ORG-f_index.01.R
+    Right Little Distal: ORG-f_pinky.03.R
+    Right Little Intermediate: ORG-f_pinky.02.R
+    Right Little Proximal: ORG-f_pinky.01.R
+    Right Thumb Distal: ORG-thumb.03.R
+    Right Thumb Intermediate: ORG-thumb.02.R
+    Right Thumb Proximal: ORG-thumb.01.R
+    RightFoot: ORG-foot.R
+    RightHand: ORG-hand.R
+    RightLowerArm: ORG-forearm.R
+    RightLowerLeg: ORG-shin.R
+    RightShoulder: ORG-shoulder.R
+    RightToes: ORG-toe.R
+    RightUpperArm: ORG-upper_arm.R
+    RightUpperLeg: ORG-thigh.R
+    Spine: ORG-spine
