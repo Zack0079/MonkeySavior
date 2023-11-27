@@ -12,8 +12,9 @@ public class PlayerController : MonoBehaviour
     public UnityEvent onTakeDamage;
     private Animator animator;
 
-    void Start(){
-      animator = GetComponent<Animator>();
+    void Start()
+    {
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -36,22 +37,32 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if(animator != null){
-          if(!movement.Equals(Vector3.zero)){
-            animator.SetFloat("Speed",speed);
-          }else{
-            animator.SetFloat("Speed",0);
-          }
+        if (animator != null)
+        {
+            if (!movement.Equals(Vector3.zero))
+            {
+                animator.SetFloat("Speed", speed);
+            }
+            else
+            {
+                animator.SetFloat("Speed", 0);
+            }
         }
 
         // Shoot
         if (Input.GetMouseButtonDown(0))
         {
             Shoot();
-            if(animator != null){
-              animator.SetTrigger("Attack");
+            if (animator != null)
+            {
+                animator.SetTrigger("Attack");
             }
         }
+
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y - transform.position.y));
+        // Calculate the direction to the mouse position
+        Vector3 direction = (mousePosition - transform.position).normalized;
+        transform.rotation  = Quaternion.LookRotation(direction);
     }
 
     void Shoot()
@@ -71,11 +82,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-                Debug.Log("collision");
+        Debug.Log("collision");
 
         if (collision.gameObject.CompareTag("Enemy"))
         {
-          Debug.Log("damage");
+            Debug.Log("damage");
             onTakeDamage.Invoke();
         }
     }
