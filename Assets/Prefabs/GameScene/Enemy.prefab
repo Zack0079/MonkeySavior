@@ -8509,6 +8509,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsByKill: 1
+  healthPickupPrefab: {fileID: 8802359835328523694, guid: c8092059074cc42b186a8a6efcf92afd, type: 3}
+  scorePickupPrefab: {fileID: 8259690375989624425, guid: 93b752752332146ec8013ba1f9408cfb, type: 3}
 --- !u!136 &-2638713976842799533
 CapsuleCollider:
   m_ObjectHideFlags: 0

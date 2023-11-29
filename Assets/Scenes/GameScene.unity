@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -329,6 +329,40 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7214657645899737848, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
   m_PrefabInstance: {fileID: 4525088937287223866}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &376210097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 376210098}
+  m_Layer: 0
+  m_Name: GameControllers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &376210098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376210097}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 82.12526, y: -155.25323, z: 34.155884}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1088163432}
+  - {fileID: 1199832482}
+  - {fileID: 966861684}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &458389963
 GameObject:
   m_ObjectHideFlags: 3
@@ -650,12 +684,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 966861682}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.000029802322, y: 17.937607, z: 0.87263006}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -82.12523, y: 173.19084, z: -33.283253}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 376210098}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1088163431
 GameObject:
@@ -682,12 +716,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088163431}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -82.12526, y: 155.25323, z: -34.155884}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 376210098}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1088163433
 MonoBehaviour:
@@ -707,6 +741,63 @@ MonoBehaviour:
   numberOfEnemies: 10
   spawnDelay: 10
   waves: 3
+--- !u!1001 &1128149847
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4734987487887880470, guid: 93b752752332146ec8013ba1f9408cfb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.0711064
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734987487887880470, guid: 93b752752332146ec8013ba1f9408cfb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734987487887880470, guid: 93b752752332146ec8013ba1f9408cfb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.39628077
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734987487887880470, guid: 93b752752332146ec8013ba1f9408cfb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734987487887880470, guid: 93b752752332146ec8013ba1f9408cfb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734987487887880470, guid: 93b752752332146ec8013ba1f9408cfb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734987487887880470, guid: 93b752752332146ec8013ba1f9408cfb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734987487887880470, guid: 93b752752332146ec8013ba1f9408cfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734987487887880470, guid: 93b752752332146ec8013ba1f9408cfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4734987487887880470, guid: 93b752752332146ec8013ba1f9408cfb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8259690375989624425, guid: 93b752752332146ec8013ba1f9408cfb, type: 3}
+      propertyPath: m_Name
+      value: Score
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 93b752752332146ec8013ba1f9408cfb, type: 3}
 --- !u!1 &1199832480
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,6 +828,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
+  item_amount: 50
+  healthPickupPrefab: {fileID: 8802359835328523694, guid: c8092059074cc42b186a8a6efcf92afd, type: 3}
   healthText: {fileID: 44410889}
 --- !u!4 &1199832482
 Transform:
@@ -746,12 +839,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199832480}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -82.12526, y: 155.25323, z: -34.155884}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 376210098}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1594381093
 GameObject:
@@ -1187,9 +1280,73 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1103077057388418310, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
+      propertyPath: onAddHealth.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103077057388418310, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
+      propertyPath: onScorePickup.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103077057388418310, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
+      propertyPath: onAddHealth.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103077057388418310, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
+      propertyPath: onAddHealth.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1199832481}
+    - target: {fileID: 1103077057388418310, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
+      propertyPath: onScorePickup.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103077057388418310, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
       propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1199832481}
+    - target: {fileID: 1103077057388418310, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
+      propertyPath: onScorePickup.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 966861683}
+    - target: {fileID: 1103077057388418310, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
+      propertyPath: onAddHealth.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103077057388418310, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
+      propertyPath: onAddHealth.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddHealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103077057388418310, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
+      propertyPath: onScorePickup.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103077057388418310, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
+      propertyPath: onScorePickup.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddScore
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103077057388418310, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
+      propertyPath: onAddHealth.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: HealthController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103077057388418310, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
+      propertyPath: onAddHealth.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103077057388418310, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
+      propertyPath: onScorePickup.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ScoreController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103077057388418310, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
+      propertyPath: onScorePickup.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103077057388418310, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
+      propertyPath: onAddHealth.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1103077057388418310, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
+      propertyPath: onScorePickup.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5597405220463439102, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1272,6 +1429,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onAddHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  onScorePickup:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &5243842883136226640
 Transform:
   m_ObjectHideFlags: 0
@@ -1498,8 +1661,7 @@ SceneRoots:
   - {fileID: 4525088937287223866}
   - {fileID: 5243842883136226640}
   - {fileID: 1601019883}
-  - {fileID: 1088163432}
-  - {fileID: 1199832482}
   - {fileID: 2016674704}
   - {fileID: 745816021}
-  - {fileID: 966861684}
+  - {fileID: 376210098}
+  - {fileID: 1128149847}
