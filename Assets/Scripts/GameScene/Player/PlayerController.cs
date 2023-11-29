@@ -91,11 +91,22 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("damage");
             onTakeDamage.Invoke();
+            
+            //make player invincible for a few seconds
+            StartCoroutine(Invincible());
         }
-
-        
     }
-
+    
+    IEnumerator Invincible()
+    {
+        //disable collider
+        GetComponent<Collider>().enabled = false;
+        //wait for 3 seconds
+        yield return new WaitForSeconds(3);
+        //enable collider
+        GetComponent<Collider>().enabled = true;
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Health"))

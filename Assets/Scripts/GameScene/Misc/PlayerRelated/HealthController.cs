@@ -10,6 +10,8 @@ public class HealthController : MonoBehaviour
     public int item_amount = 15;
     public GameObject healthPickupPrefab;
     private GameObject ground;
+    private GameObject player;
+    public GameObject gameOverCanvas;
     
     // create a ui for health
     public TextMeshProUGUI healthText;
@@ -19,6 +21,8 @@ public class HealthController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
+        
         healthText.text = "Health: " + health;
         
         //Get the ground object from scene and spawn items on it within its area
@@ -36,6 +40,13 @@ public class HealthController : MonoBehaviour
     void Update()
     {
         healthText.text = "Health: " + health;
+
+        if (health <= 0)
+        {
+            player.SetActive(false);
+            gameOverCanvas.SetActive(true);
+            
+        }
     }
 
     public void TakeDamage(int damage)
