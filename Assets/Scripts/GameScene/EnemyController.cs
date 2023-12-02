@@ -7,6 +7,8 @@ using UnityEngine.Events;
 
 public class EnemyController : MonoBehaviour
 {
+    private AudioSource audioSource;
+    public AudioClip collisionSound;
     private NavMeshAgent agent;
     private GameObject player;
     private ScoreController scoreController;
@@ -17,6 +19,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
@@ -32,14 +35,16 @@ public class EnemyController : MonoBehaviour
 
         agent.SetDestination(player.transform.position);
 
-        if(animator != null){
-          animator.SetBool("isRunning", true);
+        if (animator != null)
+        {
+            animator.SetBool("isRunning", true);
 
-          if(distance < 1f){
-            animator.SetTrigger("Attack");
-          }
+            if (distance < 1f)
+            {
+                animator.SetTrigger("Attack");
+            }
         }
-        
+
         if (health <= 0)
         {
             scoreController.AddScore(pointsByKill);
@@ -51,6 +56,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
+            audioSource.PlayOneShot(collisionSound);
             Destroy(collision.gameObject);
             health--;
         }

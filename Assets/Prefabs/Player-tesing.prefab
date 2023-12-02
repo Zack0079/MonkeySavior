@@ -116,6 +116,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  shootSound: {fileID: 8300000, guid: d8aeeedb1f487c04d9e2a07a1c05bbf7, type: 3}
 --- !u!195 &1431152593487226721
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -26,6 +26,7 @@ public class SoundManager : MonoBehaviour
     public void SetVolumeFromSlider()
     {
         SetVolume(slider.value);
+        PlayerPrefs.Save();
     }
 
     public void RefreshSlider(float value)

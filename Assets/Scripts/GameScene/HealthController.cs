@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class HealthController : MonoBehaviour
 {
     public int health = 3;
+    public AudioClip damageSound;
+    private AudioSource audioSource;
+
 
     // create a ui for health
     public TextMeshProUGUI healthText;
@@ -15,6 +18,7 @@ public class HealthController : MonoBehaviour
     void Start()
     {
         healthText.text = "Health: " + health;
+        audioSource = GetComponent<AudioSource>(); // And this line
     }
 
     void Update()
@@ -25,6 +29,7 @@ public class HealthController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        audioSource.PlayOneShot(damageSound);
     }
 
     public void AddHealth(int amount)
