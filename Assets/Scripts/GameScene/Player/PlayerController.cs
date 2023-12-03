@@ -7,6 +7,8 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
+    private AudioSource audioSource;
+    public AudioClip shootSound;
     public float speed = 10.0f;
     public GameObject bulletPrefab;
     // events
@@ -15,9 +17,11 @@ public class PlayerController : MonoBehaviour
     public UnityEvent onScorePickup;
     private Animator animator;
 
+
     void Start()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -65,7 +69,7 @@ public class PlayerController : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y - transform.position.y));
         // Calculate the direction to the mouse position
         Vector3 direction = (mousePosition - transform.position).normalized;
-        transform.rotation  = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.LookRotation(direction);
     }
 
     void Shoot()
@@ -78,6 +82,8 @@ public class PlayerController : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(direction);
         // Instantiate the bullet with the calculated rotation
         GameObject bullet = Instantiate(bulletPrefab, transform.position, rotation);
+        //play sound
+        audioSource.PlayOneShot(shootSound);
         // Add the BulletController script to the bullet
         bullet.AddComponent<Bullet>();
     }
