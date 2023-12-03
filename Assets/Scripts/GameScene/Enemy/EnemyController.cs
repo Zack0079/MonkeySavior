@@ -22,6 +22,10 @@ public class EnemyController : MonoBehaviour
     public GameObject healthPickupPrefab;
     public GameObject scorePickupPrefab;
 
+    // sound effect
+    private AudioSource audioSource;
+    public AudioClip collisionSound;
+
     private void OnDestroy()
     {
         if (!this.gameObject.scene.isLoaded) return;
@@ -46,6 +50,8 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        audioSource = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
@@ -87,6 +93,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
+            audioSource.PlayOneShot(collisionSound);
             Destroy(collision.gameObject);
             health--;
         }

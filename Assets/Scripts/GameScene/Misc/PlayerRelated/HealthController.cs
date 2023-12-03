@@ -24,11 +24,17 @@ public class HealthController : MonoBehaviour
     public int generatedItem = 0;
     private MainManager mainManager;
 
+    // sound effect
+    public AudioClip damageSound;
+    public AudioClip healingSound;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         mainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
+        audioSource = GetComponent<AudioSource>(); // And this line
 
         if (mainManager != null && mainManager.health > 3)
         {
@@ -103,6 +109,8 @@ public class HealthController : MonoBehaviour
         {
             mainManager.health = health;
         }
+
+        audioSource.PlayOneShot(damageSound);
     }
 
     public void AddHealth(int amount)
@@ -113,6 +121,7 @@ public class HealthController : MonoBehaviour
         {
             mainManager.health = health;
         }
+        audioSource.PlayOneShot(healingSound);
     }
 
 }
