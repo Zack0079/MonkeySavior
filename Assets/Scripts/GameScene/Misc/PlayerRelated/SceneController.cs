@@ -6,6 +6,7 @@ public class SceneController : MonoBehaviour
 {
     public GameObject pauseMenu;
     public bool isPaused = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,10 +29,11 @@ public class SceneController : MonoBehaviour
                 PauseGame();
             }
         }
-        
-        
+
+
     }
-    
+
+
     void PauseGame()
     {
         isPaused = true;
@@ -57,7 +59,7 @@ public class SceneController : MonoBehaviour
         // Hide the pause menu
         pauseMenu.SetActive(false);
     }
-    
+
     //method to reset current scene
     public void ResetScene()
     {
@@ -66,7 +68,7 @@ public class SceneController : MonoBehaviour
         //reload current scene
         UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene.name);
     }
-    
+
     //method to go to previous scene
     public void GoToPreviousScene()
     {
@@ -77,12 +79,12 @@ public class SceneController : MonoBehaviour
         //load previous scene
         UnityEngine.SceneManagement.SceneManager.LoadScene(currentSceneIndex - 1);
     }
-    
+
     //method to go to main menu
     public void GoToMainMenu()
     {
         //load main menu scene without keeping current scene in memory
-        
+
         //get current scenes
         UnityEngine.SceneManagement.Scene currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
         //get current scene index
@@ -91,7 +93,19 @@ public class SceneController : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         //unload current scene
         UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currentSceneIndex);
-        
-        
+
+    }
+
+
+    public void NextLevel()
+    {
+        UnityEngine.SceneManagement.Scene currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+        //get current scene index
+        int currentSceneIndex = currentScene.buildIndex;
+
+        //load next scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene(currentSceneIndex+1);
+        //unload current scene
+        UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currentSceneIndex);
     }
 }

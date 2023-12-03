@@ -13,6 +13,9 @@ public class EnemyController : MonoBehaviour
     private ScoreController scoreController;
     private Animator animator;
 
+    private GameManager gameManager;
+
+
     public int pointsByKill = 1;
     private int health = 3;
 
@@ -21,6 +24,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnDestroy()
     {
+       if(!this.gameObject.scene.isLoaded) return;
         //on a 1/10 chance, 
         if (UnityEngine.Random.Range(0, 20) == 0)
         {
@@ -48,6 +52,8 @@ public class EnemyController : MonoBehaviour
         //find player
         player = GameObject.Find("Player");
         scoreController = GameObject.Find("ScoreController").GetComponent<ScoreController>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
     }
 
     // Update is called once per frame
@@ -69,6 +75,7 @@ public class EnemyController : MonoBehaviour
         {
             scoreController.AddScore(pointsByKill);
             Destroy(gameObject);
+            gameManager.defeadEnemies += 1;
         }
     }
 

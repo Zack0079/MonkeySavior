@@ -8,12 +8,12 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("GameScene"); // Replace with the name of your game scene
+        SceneManager.LoadScene("Level1"); // Replace with the name of your game scene
     }
 
     public void LoadGame()
     {
-        SceneManager.LoadScene("GameScene"); // Replace with the name of your game scene
+        SceneManager.LoadScene("Level1"); // Replace with the name of your game scene
     }
 
     public void Settings()
