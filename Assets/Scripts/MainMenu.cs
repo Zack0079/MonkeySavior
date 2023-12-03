@@ -1,14 +1,22 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class MainMenu : MonoBehaviour
 {
     public GameObject settingsPanel; // Reference to the settings panel
     public GameObject menuPanel; // Reference to the menu panel
     private MainManager mainManager;
+    private SoundManager soundManager;
+    public Slider slider;
 
     void Start(){
         mainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
+        if(SceneManager.GetActiveScene().buildIndex == 0){
+          soundManager = GameObject.Find("MainManager").GetComponent<SoundManager>();
+          soundManager.resetSlider(slider);
+        }
     }
 
     public void StartGame()

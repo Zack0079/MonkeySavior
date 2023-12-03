@@ -10,6 +10,7 @@ TagManager:
   - EnemyArm
   - Health
   - Score
+  - Slider
   layers:
   - Default
   - TransparentFX
