@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletPrefab;
     // events
     public UnityEvent onTakeDamage;
+    public UnityEvent onAddHealth;
+    public UnityEvent onScorePickup;
     private Animator animator;
 
     void Start()
@@ -88,6 +91,36 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("damage");
             onTakeDamage.Invoke();
+            
+            //make player invincible for a few seconds
+            StartCoroutine(Invincible());
+        }
+    }
+    
+    IEnumerator Invincible()
+    {
+        //disable collider
+        GetComponent<Collider>().enabled = false;
+        //wait for 3 seconds
+        yield return new WaitForSeconds(3);
+        //enable collider
+        GetComponent<Collider>().enabled = true;
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Health"))
+        {
+            Debug.Log("Invoke AddHealth (HealController)");
+            onAddHealth.Invoke();
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Score"))
+        {
+            Debug.Log("Invoke ADDSCORE (ScoreController)");
+            onScorePickup.Invoke();
+            Destroy(other.gameObject);
         }
     }
 }

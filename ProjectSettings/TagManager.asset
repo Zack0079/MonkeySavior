@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - GameArea
   - EnemyArm
+  - Health
+  - Score
   layers:
   - Default
   - TransparentFX

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -14,6 +15,30 @@ public class EnemyController : MonoBehaviour
 
     public int pointsByKill = 1;
     private int health = 3;
+
+    public GameObject healthPickupPrefab;
+    public GameObject scorePickupPrefab;
+
+    private void OnDestroy()
+    {
+        //on a 1/10 chance, 
+        if (UnityEngine.Random.Range(0, 20) == 0)
+        {
+            //spawn a health pickup
+            GameObject healthPickup = Instantiate(healthPickupPrefab);
+            healthPickup.transform.position = this.transform.position;
+            //move it to the left a bit
+            healthPickup.transform.position += new Vector3(-1, 0, 0);
+        }
+        
+        if(UnityEngine.Random.Range(0, 10) == 0)
+        {
+            GameObject scorePickup = Instantiate(scorePickupPrefab);
+            scorePickup.transform.position = this.transform.position;
+            scorePickup.transform.position += new Vector3(1, 0, 0);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

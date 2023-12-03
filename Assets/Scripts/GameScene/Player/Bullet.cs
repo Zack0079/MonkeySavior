@@ -11,7 +11,8 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.position += transform.forward * speed * Time.deltaTime;
-
+        //spin the prefab bullet on the y axis, without effecting direction of bullet
+        transform.Rotate(0, 0, 360 * Time.deltaTime);
         Destroy(gameObject, 5f);
     }
 }
