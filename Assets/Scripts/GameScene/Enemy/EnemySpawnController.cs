@@ -16,12 +16,18 @@ public class EnemySpawnController : MonoBehaviour
 
 
     private GameManager gameManager;
+    private MainManager mainManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnEnemies", 0f, spawnDelay);
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        mainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
+
+        numberOfEnemies = numberOfEnemies*mainManager.difficulty;
+
+
+        InvokeRepeating("SpawnEnemies", 0f, spawnDelay);
         gameManager.totalEnemies = numberOfEnemies*waves;
     }
 

@@ -1716,7 +1716,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 170446, guid: bad2cf626dc49384e9f22e615012024d, type: 3}
   player: {fileID: 288482078}
   radius: 18
-  numberOfEnemies: 10
+  numberOfEnemies: 8
   spawnDelay: 10
   waves: 3
 --- !u!1 &1199832480
@@ -3010,10 +3010,6 @@ PrefabInstance:
     - target: {fileID: 5597405220463439102, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
       propertyPath: m_Enabled
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6022830360517357387, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
-      propertyPath: m_Volume
-      value: 0.689
       objectReference: {fileID: 0}
     - target: {fileID: 7214657645899737848, guid: 5e37cdb0b57a63143a1b22e811b8127a, type: 3}
       propertyPath: m_LocalPosition.x

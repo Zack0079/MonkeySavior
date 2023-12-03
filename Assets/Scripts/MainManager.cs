@@ -28,6 +28,5 @@ public class MainManager : MonoBehaviour
   public void resetSorce(){
       Instance.score = 0;
       Instance.health = 3;
-      Instance.difficulty = 1;
   }
 }
