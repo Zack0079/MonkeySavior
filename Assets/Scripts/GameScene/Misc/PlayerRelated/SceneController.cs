@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class SceneController : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public TextMeshProUGUI title;
+    private string gameover = "GAME OVER";
+    private string pause = "PAUSE";
+    private MainManager mainManager;
+
     public bool isPaused = false;
 
     // Start is called before the first frame update
@@ -12,6 +19,7 @@ public class SceneController : MonoBehaviour
     {
         //time scale is 1 by default
         Time.timeScale = 1f;
+        mainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
     }
 
     // Update is called once per frame
@@ -36,33 +44,44 @@ public class SceneController : MonoBehaviour
 
     void PauseGame()
     {
-        isPaused = true;
-        Time.timeScale = 0f; // Pause the game
+        if (!pauseMenu.activeSelf && Time.timeScale == 1f)
+        {
+            title.text = pause;
+            isPaused = true;
+            Time.timeScale = 0f; // Pause the game
+                                 // Disable components or scripts that control the game logic
+                                 // For example, you can disable the PlayerController script:
+            FindObjectOfType<PlayerController>().enabled = false;
 
-        // Disable components or scripts that control the game logic
-        // For example, you can disable the PlayerController script:
-        FindObjectOfType<PlayerController>().enabled = false;
-
-        // Show the pause menu
-        pauseMenu.SetActive(true);
+            // Show the pause menu
+            pauseMenu.SetActive(true);
+        }
     }
 
     void ResumeGame()
     {
-        isPaused = false;
-        Time.timeScale = 1f; // Resume the game
 
-        // Enable components or scripts that were disabled during pause
-        // For example, you can enable the PlayerController script:
-        FindObjectOfType<PlayerController>().enabled = true;
+        if (pauseMenu.activeSelf)
+        {
+            isPaused = false;
+            Time.timeScale = 1f; // Resume the game
 
-        // Hide the pause menu
-        pauseMenu.SetActive(false);
+            // Enable components or scripts that were disabled during pause
+            // For example, you can enable the PlayerController script:
+            FindObjectOfType<PlayerController>().enabled = true;
+
+            // Hide the pause menu
+            pauseMenu.SetActive(false);
+            title.text = gameover;
+        }
     }
 
     //method to reset current scene
     public void ResetScene()
     {
+        if(mainManager != null){
+              mainManager.resetSorce();
+        }
         //get current scene
         UnityEngine.SceneManagement.Scene currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
         //reload current scene
@@ -104,8 +123,8 @@ public class SceneController : MonoBehaviour
         int currentSceneIndex = currentScene.buildIndex;
 
         //load next scene
-        UnityEngine.SceneManagement.SceneManager.LoadScene(currentSceneIndex+1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(currentSceneIndex + 1);
         //unload current scene
-        UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currentSceneIndex);
+        // UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(currentSceneIndex);
     }
 }

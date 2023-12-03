@@ -122,5 +122,14 @@ public class PlayerController : MonoBehaviour
             onScorePickup.Invoke();
             Destroy(other.gameObject);
         }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("damage");
+            onTakeDamage.Invoke();
+            
+            //make player invincible for a few seconds
+            StartCoroutine(Invincible());
+        }
     }
 }

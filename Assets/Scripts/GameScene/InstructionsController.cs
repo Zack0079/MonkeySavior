@@ -12,13 +12,13 @@ public class InstructionsController : MonoBehaviour
     void Update()
     {
         // Show the instructions panel when TAB is held down
-        if (Input.GetKey(KeyCode.Tab))
+        if (Input.GetKey(KeyCode.Tab) && Time.timeScale == 1f)
         {
             ShowInstructions();
         }
 
         // Hide the instructions panel when TAB is released
-        if (Input.GetKeyUp(KeyCode.Tab))
+        if (Input.GetKeyUp(KeyCode.Tab) && instructionsPanel.activeSelf)
         {
             HideInstructions();
         }

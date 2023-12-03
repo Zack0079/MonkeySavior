@@ -22,11 +22,18 @@ public class HealthController : MonoBehaviour
 
     private Bounds bounds;
     public int generatedItem = 0;
+    private MainManager mainManager;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
+        mainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
+
+        if (mainManager != null && mainManager.health > 3)
+        {
+            health = mainManager.health;
+        }
 
         healthText.text = "Health: " + health;
 
@@ -40,7 +47,7 @@ public class HealthController : MonoBehaviour
 
     void SpawnHealthPickUp()
     {
-        if ( generatedItem < item_amount)
+        if (generatedItem < item_amount)
         {
             //find random position within bounds of ground
             // Vector3 spawnPosition = new Vector3( Random.Range(bounds.min.x, bounds.max.x), bounds.center.y + 1, Random.Range(bounds.min.z, bounds.max.z) );
@@ -70,31 +77,42 @@ public class HealthController : MonoBehaviour
 
 
             Instantiate(healthPickupPrefab, spawnPosition, Quaternion.identity);
-            generatedItem+=1;
+            generatedItem += 1;
         }
     }
 
     void Update()
     {
+        if (health < 0)
+        {
+            health = 0;
+        }
         healthText.text = "Health: " + health;
 
         if (health <= 0)
         {
             player.SetActive(false);
             gameOverCanvas.SetActive(true);
-
         }
     }
 
     public void TakeDamage(int damage)
     {
         health -= damage;
+        if (mainManager != null)
+        {
+            mainManager.health = health;
+        }
     }
 
     public void AddHealth(int amount)
     {
         health += amount;
-        generatedItem-=1;
+        generatedItem -= 1;
+        if (mainManager != null)
+        {
+            mainManager.health = health;
+        }
     }
 
 }

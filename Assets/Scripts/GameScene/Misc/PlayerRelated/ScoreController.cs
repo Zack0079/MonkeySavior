@@ -7,14 +7,30 @@ public class ScoreController : MonoBehaviour
 {
     private int score = 0;
     public TextMeshProUGUI scoreText;
-    public void AddScore(int amount)
-    {
-        score += amount;
-        scoreText.text = "Score: " + score;
-    }
+
+    private MainManager mainManager;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
+        mainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
+        if(mainManager != null){
+          score = mainManager.score;
+        }
+
+        scoreText.text = "Score: " + score;
+    }
+
+
+    public void AddScore(int amount)
+    {
+        if(mainManager != null){
+            mainManager.score = score;
+        }
+
+        score += amount;
         scoreText.text = "Score: " + score;
     }
 }

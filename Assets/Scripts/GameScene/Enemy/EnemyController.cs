@@ -24,7 +24,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnDestroy()
     {
-       if(!this.gameObject.scene.isLoaded) return;
+        if (!this.gameObject.scene.isLoaded) return;
         //on a 1/10 chance, 
         if (UnityEngine.Random.Range(0, 20) == 0)
         {
@@ -34,8 +34,8 @@ public class EnemyController : MonoBehaviour
             //move it to the left a bit
             healthPickup.transform.position += new Vector3(-1, 0, 0);
         }
-        
-        if(UnityEngine.Random.Range(0, 10) == 0)
+
+        if (UnityEngine.Random.Range(0, 10) == 0)
         {
             GameObject scorePickup = Instantiate(scorePickupPrefab);
             scorePickup.transform.position = this.transform.position;
@@ -59,18 +59,22 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(this.transform.position, player.transform.position);
+        if (player.activeSelf)
+        {
+            float distance = Vector3.Distance(this.transform.position, player.transform.position);
+            agent.SetDestination(player.transform.position);
 
-        agent.SetDestination(player.transform.position);
-
-        if(animator != null){
-          animator.SetBool("isRunning", true);
-
-          if(distance < 1f){
-            animator.SetTrigger("Attack");
-          }
+            if (animator != null)
+            {
+                animator.SetBool("isRunning", true);
+                if (distance < 2f)
+                {
+                    animator.SetTrigger("Attack");
+                }
+            }
         }
-        
+
+
         if (health <= 0)
         {
             scoreController.AddScore(pointsByKill);
