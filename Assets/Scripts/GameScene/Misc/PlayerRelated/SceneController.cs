@@ -19,7 +19,10 @@ public class SceneController : MonoBehaviour
     {
         //time scale is 1 by default
         Time.timeScale = 1f;
-        mainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
+        GameObject tmp  = GameObject.Find("MainManager"); 
+        if(tmp != null){
+            mainManager = tmp.GetComponent<MainManager>();
+        }
     }
 
     // Update is called once per frame

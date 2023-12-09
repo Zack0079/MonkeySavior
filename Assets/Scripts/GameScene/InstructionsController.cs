@@ -6,7 +6,10 @@ public class InstructionsController : MonoBehaviour
 
     void Start()
     {
-        HideInstructions();
+        // HideInstructions();
+        if(instructionsPanel.activeSelf){
+            Time.timeScale = 0;
+        }
     }
 
     void Update()

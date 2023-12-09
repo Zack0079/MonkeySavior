@@ -33,14 +33,18 @@ public class HealthController : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-        mainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
-        audioSource = GetComponent<AudioSource>(); // And this line
-
-        if (mainManager != null && mainManager.health > 3)
-        {
-            health = mainManager.health;
+        
+        
+        GameObject tmp  = GameObject.Find("MainManager"); 
+        if(tmp != null){
+          mainManager = tmp.GetComponent<MainManager>();
+            if (mainManager.health > 3)
+            {
+                health = mainManager.health;
+            }
         }
 
+        audioSource = GetComponent<AudioSource>(); // And this line
         healthText.text = "Health: " + health;
 
         //Get the ground object from scene and spawn items on it within its area

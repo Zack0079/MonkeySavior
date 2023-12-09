@@ -8399,12 +8399,12 @@ GameObject:
   - component: {fileID: 9513028}
   - component: {fileID: -2384518865425612098}
   - component: {fileID: -3931247126120762644}
-  - component: {fileID: -875385361892777384}
   - component: {fileID: -2638713976842799533}
   - component: {fileID: 6816258380855025580}
   - component: {fileID: 4758889223323048351}
+  - component: {fileID: 7404272689746543199}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy-elite
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8437,7 +8437,7 @@ Animator:
   m_GameObject: {fileID: 170446}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 176bb58726540db41b891208fbaaf55a, type: 3}
-  m_Controller: {fileID: 9100000, guid: 50849609ddfc2fb47a20a15052d1e12b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 90d25751ebe357f48b317c49c73797df, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -8497,22 +8497,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-875385361892777384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a48419a6e3b8cf04abb38cfd822b6f5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointsByKill: 1
-  healthPickupPrefab: {fileID: 8802359835328523694, guid: c8092059074cc42b186a8a6efcf92afd, type: 3}
-  scorePickupPrefab: {fileID: 8259690375989624425, guid: 93b752752332146ec8013ba1f9408cfb, type: 3}
-  collisionSound: {fileID: 8300000, guid: ae348e9d2ae47a94eb8ab9bef7559fe8, type: 3}
 --- !u!136 &-2638713976842799533
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8653,6 +8637,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7404272689746543199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84a19f8a992967409b4eae618b86aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsByKill: 3
+  healthPickupPrefab: {fileID: 8802359835328523694, guid: c8092059074cc42b186a8a6efcf92afd, type: 3}
+  scorePickupPrefab: {fileID: 8259690375989624425, guid: 93b752752332146ec8013ba1f9408cfb, type: 3}
+  collisionSound: {fileID: 8300000, guid: ae348e9d2ae47a94eb8ab9bef7559fe8, type: 3}
+  bulletPrefab: {fileID: 8835367685088153812, guid: a15c11ddf56948142a6902171b994662, type: 3}
+  shootPeriodTime: 5
+  shootDistance: 8
 --- !u!1 &170896
 GameObject:
   m_ObjectHideFlags: 0
@@ -10689,7 +10692,7 @@ GameObject:
   - component: {fileID: 490152}
   - component: {fileID: 13792494}
   m_Layer: 0
-  m_Name: MrMo_B
+  m_Name: MrMo_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10730,7 +10733,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 23bd00ead021c994f995570620f6c2f4, type: 2}
+  - {fileID: 2100000, guid: 44caa2a3636d74b44be253f940f73f83, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

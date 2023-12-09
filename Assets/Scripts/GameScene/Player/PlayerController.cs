@@ -98,6 +98,12 @@ public class PlayerController : MonoBehaviour
             Debug.Log("damage");
             onTakeDamage.Invoke();
             
+                        Debug.Log(collision.gameObject.name);
+
+            if(collision.gameObject.name.Contains("EnemyBullet")){
+                Destroy(collision.gameObject);
+            }
+
             //make player invincible for a few seconds
             StartCoroutine(Invincible());
         }
@@ -133,7 +139,9 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("damage");
             onTakeDamage.Invoke();
-            
+            if(other.gameObject.name.Contains("EnemyBullet")){
+                Destroy(other.gameObject);
+            }
             //make player invincible for a few seconds
             StartCoroutine(Invincible());
         }

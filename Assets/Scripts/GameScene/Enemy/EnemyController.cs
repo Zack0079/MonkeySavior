@@ -8,25 +8,25 @@ using UnityEngine.Events;
 
 public class EnemyController : MonoBehaviour
 {
-    private NavMeshAgent agent;
-    private GameObject player;
-    private ScoreController scoreController;
-    private Animator animator;
+    protected NavMeshAgent agent;
+    protected GameObject player;
+    protected ScoreController scoreController;
+    protected Animator animator;
 
-    private GameManager gameManager;
+    protected GameManager gameManager;
 
 
     public int pointsByKill = 1;
-    private int health = 3;
+    protected int health = 3;
 
     public GameObject healthPickupPrefab;
     public GameObject scorePickupPrefab;
 
     // sound effect
-    private AudioSource audioSource;
+    protected AudioSource audioSource;
     public AudioClip collisionSound;
 
-    private void OnDestroy()
+    protected void OnDestroy()
     {
         if (!this.gameObject.scene.isLoaded) return;
         //on a 1/10 chance, 

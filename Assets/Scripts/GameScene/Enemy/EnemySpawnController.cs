@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemySpawnController : MonoBehaviour
 {
     public GameObject enemyPrefab;
+    public GameObject enemyElitePrefab;
     public GameObject player;
 
     public float radius = 10.0f;
@@ -13,6 +14,9 @@ public class EnemySpawnController : MonoBehaviour
     public float spawnDelay = 10.0f;
     public int waves = 3;
     int spawnedMonkey = 0;
+    int difficulty = 1;
+
+    public int eliteEnemyRatioToEnemy = 5;
 
 
     private GameManager gameManager;
@@ -22,9 +26,14 @@ public class EnemySpawnController : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        mainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
 
-        numberOfEnemies = numberOfEnemies*mainManager.difficulty;
+        GameObject tmp  = GameObject.Find("MainManager"); 
+        if(tmp != null){
+          mainManager = tmp.GetComponent<MainManager>();
+          difficulty = mainManager.difficulty;
+        }
+
+        numberOfEnemies = numberOfEnemies * difficulty;
 
 
         InvokeRepeating("SpawnEnemies", 0f, spawnDelay);
@@ -38,7 +47,10 @@ public class EnemySpawnController : MonoBehaviour
         {
             float angle = i * Mathf.PI * 2 / numberOfEnemies;
             Vector3 spawnPosition = player.transform.position + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
-            Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            
+            GameObject tmp = (i+1)%eliteEnemyRatioToEnemy > 0 ? enemyPrefab : enemyElitePrefab;
+            
+            Instantiate(tmp, spawnPosition, Quaternion.identity);
             spawnedMonkey++;
         }
       }

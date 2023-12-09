@@ -15,8 +15,9 @@ public class ScoreController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
-        if(mainManager != null){
+        GameObject tmp  = GameObject.Find("MainManager"); 
+        if(tmp != null){
+          mainManager = tmp.GetComponent<MainManager>();
           score = mainManager.score;
         }
 
