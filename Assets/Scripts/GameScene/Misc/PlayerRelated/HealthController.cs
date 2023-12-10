@@ -49,7 +49,8 @@ public class HealthController : MonoBehaviour
 
         //Get the ground object from scene and spawn items on it within its area
         ground = GameObject.Find("Ground");
-        bounds = ground.GetComponent<MeshRenderer>().bounds;
+        // bounds = ground.GetComponent<MeshRenderer>().bounds;
+    
 
         InvokeRepeating("SpawnHealthPickUp", 0f, spawnDelay);
 
@@ -67,26 +68,30 @@ public class HealthController : MonoBehaviour
 
             spawnPosition.y = 1f;
 
-            if (bounds.min.x > spawnPosition.x)
+            // bounds.min.z and y
+            float min = -50f;
+            float max = 50f;
+            if (min > spawnPosition.x)
             {
-                spawnPosition.x = bounds.min.x;
+                spawnPosition.x = min;
             }
-            else if (bounds.max.x < spawnPosition.x)
+            else if (max < spawnPosition.x)
             {
-                spawnPosition.x = bounds.max.x;
-            }
-
-            if (bounds.min.z > spawnPosition.z)
-            {
-                spawnPosition.z = bounds.min.z;
-            }
-            else if (bounds.max.z < spawnPosition.z)
-            {
-                spawnPosition.z = bounds.max.z;
+                spawnPosition.x = max;
             }
 
+            if (min > spawnPosition.z)
+            {
+                spawnPosition.z = min;
+            }
+            else if (max < spawnPosition.z)
+            {
+                spawnPosition.z = max;
+            }
 
-            Instantiate(healthPickupPrefab, spawnPosition, Quaternion.identity);
+            GameObject pickUP= Instantiate(healthPickupPrefab, spawnPosition, Quaternion.identity);
+            pickUP.transform.position = pickUP.transform.position.normalized * Mathf.Min(pickUP.transform.position.magnitude, 50f);
+
             generatedItem += 1;
         }
     }

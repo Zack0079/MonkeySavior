@@ -10,13 +10,14 @@ public class PlayerController : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip shootSound;
     public float speed = 10.0f;
+    public float limitedRadius = 100f;
+
     public GameObject bulletPrefab;
     // events
     public UnityEvent onTakeDamage;
     public UnityEvent onAddHealth;
     public UnityEvent onScorePickup;
     private Animator animator;
-
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
@@ -70,6 +72,10 @@ public class PlayerController : MonoBehaviour
         // Calculate the direction to the mouse position
         Vector3 direction = (mousePosition - transform.position).normalized;
         transform.rotation = Quaternion.LookRotation(direction);
+
+
+         
+        transform.position = transform.position.normalized * Mathf.Min(transform.position.magnitude, limitedRadius);
     }
 
     void Shoot()
@@ -91,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collision");
+        // Debug.Log("collision");
 
         if (collision.gameObject.CompareTag("Enemy"))
         {

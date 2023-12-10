@@ -15,4 +15,15 @@ public class Bullet : MonoBehaviour
         transform.Rotate(0, 0, 360 * Time.deltaTime);
         Destroy(gameObject, 5f);
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("GameArea"))
+        {
+            Destroy(this);
+        }
+
+    }
+
 }
