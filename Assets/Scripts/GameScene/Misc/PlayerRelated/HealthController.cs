@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthController : MonoBehaviour
+public class HealthController : NetworkBehaviour
 {
     public int health = 3;
     public int item_amount = 15;
@@ -58,6 +59,8 @@ public class HealthController : MonoBehaviour
 
     void SpawnHealthPickUp()
     {
+        if(mainManager.mulitplayerMode && !IsServer){return;}
+
         if (generatedItem < item_amount)
         {
             //find random position within bounds of ground
@@ -91,9 +94,16 @@ public class HealthController : MonoBehaviour
 
             GameObject pickUP= Instantiate(healthPickupPrefab, spawnPosition, Quaternion.identity);
             pickUP.transform.position = pickUP.transform.position.normalized * Mathf.Min(pickUP.transform.position.magnitude, 50f);
+            Vector3 itemPosition = pickUP.transform.position;
 
             generatedItem += 1;
+            SpawnHealthPickUpClientRpc(itemPosition);
         }
+    }
+
+    [ClientRpc]
+    private void SpawnHealthPickUpClientRpc(Vector3 itemPosition){
+        Instantiate(healthPickupPrefab, itemPosition, Quaternion.identity);
     }
 
     void Update()

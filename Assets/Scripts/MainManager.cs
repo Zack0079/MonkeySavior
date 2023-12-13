@@ -10,6 +10,7 @@ public class MainManager : MonoBehaviour
   public int health = 3;
   public int highestScore;
   public int difficulty = 1;
+  public bool mulitplayerMode = false;
 
   private void Awake()
   {

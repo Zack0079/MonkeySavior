@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public int totalEnemies = 0;
     public int defeadEnemies = 0;
     public SceneController sceneController;
+    public bool singleMode = true;
 
     // Update is called once per frame
     void Update()

@@ -24,6 +24,15 @@ public class EndMenu : MonoBehaviour
 
     }
 
+    public void MainMenu()
+    {
+        if (mainManager != null)
+        {
+            mainManager.resetSorce();
+        }
+        SceneManager.LoadScene("MenuScene"); // Replace with the name of your game scene
+    }
+
     public void RestartGame()
     {
         if (mainManager != null)

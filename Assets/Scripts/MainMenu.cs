@@ -23,8 +23,19 @@ public class MainMenu : MonoBehaviour
     {
         if(mainManager != null){
           mainManager.resetSorce();
+          mainManager.mulitplayerMode= false;
         }
         SceneManager.LoadScene("Level1"); // Replace with the name of your game scene
+    }
+
+
+    public void MultiGame()
+    {
+        if(mainManager != null){
+          mainManager.resetSorce();
+          mainManager.mulitplayerMode= true;
+        }
+        SceneManager.LoadScene("MultiLevel"); // Replace with the name of your game scene
     }
 
     public void LoadGame()

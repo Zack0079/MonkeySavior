@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using Unity.Netcode;
 
-public class EnemySpawnController : MonoBehaviour
+public class EnemySpawnController : NetworkBehaviour
 {
     public GameObject enemyPrefab;
     public GameObject enemyElitePrefab;
@@ -42,6 +43,8 @@ public class EnemySpawnController : MonoBehaviour
 
     void SpawnEnemies()
     {
+      if(mainManager.mulitplayerMode && !IsServer){return;}
+
       if(spawnedMonkey < waves*numberOfEnemies){
         for (int i = 0; i < numberOfEnemies; i++)
         {
@@ -52,8 +55,19 @@ public class EnemySpawnController : MonoBehaviour
             
             Instantiate(tmp, spawnPosition, Quaternion.identity);
             spawnedMonkey++;
+
+            SpawnEnemyClientRpc((i+1)%eliteEnemyRatioToEnemy > 0,spawnPosition);
+
         }
       }
+    }
+
+
+    
+    [ClientRpc]
+    private void SpawnEnemyClientRpc(bool value, Vector3 spawnPosition){
+      GameObject tmp = value ? enemyPrefab : enemyElitePrefab;
+        Instantiate(tmp, spawnPosition, Quaternion.identity);
     }
 
     void OnDrawGizmos()

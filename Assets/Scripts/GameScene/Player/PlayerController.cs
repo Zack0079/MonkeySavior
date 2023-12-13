@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     private AudioSource audioSource;
     public AudioClip shootSound;
@@ -18,21 +19,28 @@ public class PlayerController : MonoBehaviour
     public UnityEvent onAddHealth;
     public UnityEvent onScorePickup;
     private Animator animator;
+    private MainManager mainManager;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+
+        GameObject tmp  = GameObject.Find("MainManager"); 
+        if(tmp != null){
+          mainManager = tmp.GetComponent<MainManager>();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if(mainManager.mulitplayerMode && !IsOwner){
+            return;
+        }
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(horizontalInput, 0.0f, verticalInput);
+          Vector3 movement = new Vector3(horizontalInput, 0.0f, verticalInput);
         transform.position += movement * speed * Time.deltaTime;
 
         // shift to run
@@ -78,6 +86,8 @@ public class PlayerController : MonoBehaviour
         transform.position = transform.position.normalized * Mathf.Min(transform.position.magnitude, limitedRadius);
     }
 
+
+
     void Shoot()
     {
         // Get the Mouse Position in World Space
@@ -92,8 +102,29 @@ public class PlayerController : MonoBehaviour
         audioSource.PlayOneShot(shootSound);
         // Add the BulletController script to the bullet
         bullet.AddComponent<Bullet>();
+
+        if(IsServer){
+            ShootBulletClientRpc(transform.position, rotation);
+        }else if(IsClient){
+            ShootBulletServerRpc(transform.position, rotation);
+        }
     }
 
+
+    [ClientRpc]
+    private void ShootBulletClientRpc(Vector3 bulletPosition, Quaternion rotation){
+        GameObject bullet = Instantiate(bulletPrefab, bulletPosition, rotation);
+        audioSource.PlayOneShot(shootSound);
+        bullet.AddComponent<Bullet>();
+
+    }
+
+    [ServerRpc]
+    private void ShootBulletServerRpc(Vector3 bulletPosition, Quaternion rotation){
+        GameObject bullet = Instantiate(bulletPrefab, bulletPosition, rotation);
+        audioSource.PlayOneShot(shootSound);
+        bullet.AddComponent<Bullet>();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {

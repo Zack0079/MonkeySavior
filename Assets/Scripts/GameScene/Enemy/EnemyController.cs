@@ -5,8 +5,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using Unity.Netcode;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : NetworkBehaviour
 {
     protected NavMeshAgent agent;
     protected GameObject player;
@@ -86,8 +87,34 @@ public class EnemyController : MonoBehaviour
             scoreController.AddScore(pointsByKill);
             Destroy(gameObject);
             gameManager.defeadEnemies += 1;
+
+            // if(IsServer){
+            //     DestroyEnemyClientRpc(gameObject.NetworkObject);
+            // }else if(IsClient){
+            //     DestroyEnemyServerRpc(gameObject.NetworkObject);
+            // }
         }
     }
+
+
+    // [ClientRpc]
+    // private void DestroyEnemyClientRpc(NetworkObject ref){
+    //    ref.TryGet(out NetworkObject  enemy);
+    //    EnemyController enemyController = enemy.GetComponent<EnemyController>();
+    //    enemyController.DestroySelf();
+
+    // }
+
+    // [ServerRpc]
+    // private void DestroyEnemyServerRpc(NetworkObject ref){
+    //    ref.TryGet(out NetworkObject  enemy);
+    //    EnemyController enemyController = enemy.GetComponent<EnemyController>();
+    //    enemyController.DestroySelf();
+    // }
+
+    // DestroySelf(){
+    //     Destroy(gameObject);
+    // }
 
     void OnCollisionEnter(Collision collision)
     {

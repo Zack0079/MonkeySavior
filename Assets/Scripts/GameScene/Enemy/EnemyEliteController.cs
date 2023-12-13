@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using Unity.Netcode;
 
 public class EnemyEliteController : EnemyController
 {
